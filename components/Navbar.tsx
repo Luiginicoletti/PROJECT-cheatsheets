@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from 'framer-motion';
 import { UserButton } from "@clerk/nextjs";
 import { Menu, Sparkles } from "lucide-react";
 import { Poppins } from "next/font/google";
@@ -22,19 +23,48 @@ const Navbar = () => {
       <div className="flex items-center">
         <MobileSidebar />
         <Link href="/">
+          <motion.h1
+            className={cn("text-xl md:text-3xl font-bold text-primary", font.className)}
+            initial={{ x: -1000 }}
+            animate={{
+              x: 0,
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              delay: 0.3,
+              type: "spring",
+              stiffness: 200,
+              damping: 15,
+            }}
 
-          <h1 className={cn("text-xl md:text-3xl font-bold text-primary", font.className)}>
+          >
             <p className="hidden lg:block">cheatsheets<span className="text-sm">bynico</span></p>
             <p className="hidden lg:hidden md:block">CS<span className="text-sm">bynico</span></p>
-            <p className="md:hidden"><span className="text-sm">csbn</span></p>
-          </h1>
+            <p className="md:hidden"><span className="text-md">csbn</span></p>
+          </motion.h1>
         </Link>
       </div>
       <div className="flex items-center gap-x-3">
-        <Button size="sm" variant="premium">
-          Upgrade
-          <Sparkles className="h-4 w-4 fill-white text-white ml-2" />
-        </Button>
+        <motion.div
+          initial={{ y: -500 }}
+          animate={{
+            y: 0,
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            delay: 5,
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+          }}>
+
+          <Button size="sm" variant="premium">
+            Upgrade
+            <Sparkles className="h-4 w-4 fill-white text-white ml-2" />
+          </Button>
+        </motion.div>
         <ModeToggle />
         <UserButton afterSignOutUrl="/" />
       </div>
