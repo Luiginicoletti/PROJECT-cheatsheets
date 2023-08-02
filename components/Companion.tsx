@@ -270,7 +270,7 @@ export const Companion = [{
 },
 {
   name: "Git",
-  id: "30",
+  id: "31",
   categoryId: "git",
   src: "/git.jpg",
   description: "aaa",
